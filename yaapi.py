@@ -1,6 +1,5 @@
 import requests
 import os
-from mytoken import TOKEN
 
 
 class YaUploader:
@@ -50,5 +49,9 @@ class YaUploader:
 
 
 if __name__ == '__main__':
-    uploader = YaUploader(TOKEN)
-    print(uploader.upload('./requirements.txt'))
+    try:
+        from mytoken import TOKEN
+        uploader = YaUploader(TOKEN)
+        print(uploader.upload('./requirements.txt'))
+    except ImportError:
+        pass
